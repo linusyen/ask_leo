@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/single_v6.css" type="text/css" media="screen, projection">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title> 誰要去叫里歐呢?? </title>
+</head>
+<body>
+    <div class="container">
+        <header role="banner">
+            <div class="brand"><img src="img/logo_b0t.png" alt="Billing Team"/></div>
+        </header>
+        <h1>決定總是困難der，就交由程式決定吧~</h1>
+        <div class="step-content has-footer">
+            <form id="list">
+                <div class="control-group">
+                    <span class="question">有哪些人要進入抽籤名單呢~~</span>
+                <hr>
+                <input type="checkbox" name="group[]" value="Inky">Inky</input>
+                <hr>
+                <input type="checkbox" name="group[]" value="Ray">Ray
+                <input type="checkbox" name="group[]" value="Linus">Linus</input>
+                <input type="checkbox" name="group[]" value="Mon">Mon</input>
+                <input type="checkbox" name="group[]" value="Leo" checked onclick="return false;">Leo</input>
+                <input type="checkbox" name="group[]" value="JJ">JJ
+                <input type="checkbox" name="group[]" value="Jason">Jason
+                <hr>
+                <input type="checkbox" name="group[]" value="Paul">Paul</input>
+                <input type="checkbox" name="group[]" value="Pear">Pear</input>
+                <input type="checkbox" name="group[]" value="Maggie">Maggie</input>
+                <input type="checkbox" name="group[]" value="Shawn">Shawn</input>
+                <input type="checkbox" name="group[]" value="Caroline">Caroline</input>
+                <hr>
+                <input type="checkbox" name="group[]" value="Jessica">Jessica</input>
+                <input type="checkbox" name="group[]" value="Sunny">Sunny</input>
+                <hr>
+                <input type="button" value="來看看抽中誰~~" class="btn btn-primary btn-block" id="submit">
+                </div>
+            </form>
+            <h1 id="who">得獎的是~~</h1>
+            <footer role="contentinfo">
+                <address class="text-center">getPersonWhoAskLeoToDoRobot Ver 0.2</address>
+            </footer>
+        </div>
+    </div>
+    <script>
+    $("#submit").click(function(){
+            $.post("ask_leo_robot.php", $("#list").serialize(),function(result){
+                    $("#who").text(result);
+                      })
+                .always(function(result) {
+                        console.log(result);
+                        $("#submit").val("再抽一次~");
+                });
+    });
+    </script>
+</body>
+</html>
+
