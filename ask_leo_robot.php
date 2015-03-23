@@ -10,7 +10,10 @@ $group = array(
     'Jason'
 );
 */
-
+if ("0106" == date('md')) {
+    echo "壽星最大，今天里歐可以自己決定誰去叫里歐跟里歐說生日快樂~~~";
+    exit;
+}
 $group = $_POST['group'];
 $who = getPersonWhoAskLeoToDo($group);
 
